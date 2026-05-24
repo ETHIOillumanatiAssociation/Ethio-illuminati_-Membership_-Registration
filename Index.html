@@ -3,334 +3,389 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ethio Illuminat Membership Registration</title>
+    <title>ETIOILUMINATI - Registration</title>
     <style>
-        /* ሙሉ የገጹ መልክ (Premium Dark Theme) */
+        /* አጠቃላይ ገጽታ እና የጀርባ ቀለም */
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: radial-gradient(circle, #1a1a1a 0%, #0d0d0d 100%);
-            color: #eaeaea;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            padding: 0;
+            background-color: #121212;
+            color: #ffffff;
         }
-        
-        /* ዋናው የፎርም ሳጥን ውበት */
-        .registration-container {
-            background: #1f1f1f;
-            border: 2px solid #d4af37; /* የወርቅ ቀለም መስመር */
-            border-radius: 16px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.2);
+
+        /* የባነር እና የከቨር ማቀፊያ */
+        .header-container {
             width: 100%;
-            max-width: 550px;
-            overflow: hidden;
-            animation: fadeIn 0.6s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ባነሩ/ሎጎው ሙሉ ለሙሉ እንዲታይ ማድረጊያ */
-        .banner-container {
-            width: 100%;
-            background-color: #0d0d0d;
-            border-bottom: 2px solid #d4af37;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .banner-container img {
-            width: 100%;
-            height: auto;
-            max-height: 250px;
-            object-fit: contain; /* ምስሉ እንዳይቆረጥ ወይም እንዳይጨፈለቅ */
-            display: block;
-        }
-
-        .form-content {
-            padding: 25px;
-        }
-
-        h2 {
+            max-width: 650px;
+            margin: 0 auto;
             text-align: center;
-            color: #d4af37; /* የወርቅ ርዕስ */
-            margin-top: 0;
-            margin-bottom: 25px;
-            font-size: 22px;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .form-page {
-            display: none;
-        }
-
-        .form-page.active {
-            display: block;
-        }
-
-        /* የግብዓት ሳጥኖች (Input Fields) ውበት */
-        .form-group {
-            margin-bottom: 22px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #d4af37; /* የፅሁፍ መግለጫዎቹ በወርቅማ ቀለም */
-            font-size: 14px;
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="number"],
-        .form-group input[type="file"],
-        .form-group select {
-            width: 100%;
-            padding: 14px;
-            background-color: #2a2a2a;
-            border: 1px solid #444;
-            border-radius: 8px;
-            color: #fff;
-            box-sizing: border-box;
-            font-size: 15px;
-            transition: all 0.3s ease;
-        }
-
-        /* ሳጥኖቹ ሲነኩ የሚኖራቸው ውበት (Focus) */
-        .form-group input:focus, .form-group select:focus {
-            border-color: #d4af37;
-            background-color: #333;
-            box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
-            outline: none;
-        }
-
-        /* የፋይል መጫኛ (Upload) ዲዛይን ማሳመሪያ */
-        .form-group input[type="file"] {
-            background-color: #252525;
-            cursor: pointer;
             padding: 10px;
         }
 
-        /* የማዘዣ ቁልፎች (Buttons) ውበት */
+        .banner-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            object-fit: cover;
+        }
+
+        .page-cover {
+            margin: 15px auto;
+            width: 100%;
+            height: 120px;
+            border: 2px dashed #00ffcc;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #00ffcc;
+            background-color: #1e1e1e;
+            font-weight: bold;
+        }
+
+        /* የፎርሙ ዋና ማቀፊያ ሳጥን */
+        .form-container {
+            max-width: 550px;
+            margin: 20px auto;
+            background: #1e1e1e;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            border-top: 4px solid #00ffcc;
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        h3 {
+            color: #00ffcc;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 20px;
+        }
+
+        /* የፎርም መግቢያዎች ስታይል */
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #cccccc;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #333;
+            border-radius: 6px;
+            background-color: #2a2a2a;
+            color: #fff;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="tel"]:focus,
+        select:focus {
+            border-color: #00ffcc;
+            outline: none;
+        }
+
+        .file-label {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* የባዮሜትሪክስ ስታይል (የፊት እና አሻራ) */
+        .biometric-box {
+            border: 1px solid #444;
+            padding: 15px;
+            border-radius: 8px;
+            background: #252525;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .bio-btn {
+            background-color: #333;
+            color: #00ffcc;
+            border: 1px solid #00ffcc;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .bio-btn:hover {
+            background-color: #00ffcc;
+            color: #000;
+        }
+
+        .scan-status {
+            font-size: 13px;
+            margin-top: 8px;
+            color: #ff3366;
+            font-weight: bold;
+        }
+
+        /* የቁልፎች ስታይል */
         .btn-container {
             display: flex;
             justify-content: space-between;
-            gap: 15px;
-            margin-top: 30px;
+            margin-top: 25px;
         }
 
-        .nav-btn {
-            flex: 1;
-            padding: 15px;
+        .btn {
+            padding: 12px 25px;
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
+            cursor: pointer;
             font-size: 16px;
             font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
 
-        .next-btn, .submit-btn {
-            background: linear-gradient(135deg, #d4af37 0%, #aa8416 100%);
-            color: #0d0d0d;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        .btn-next {
+            background-color: #00ffcc;
+            color: #000;
+            margin-left: auto;
         }
 
-        .next-btn:hover, .submit-btn:hover {
-            background: linear-gradient(135deg, #f1cc5b 0%, #c59b27 100%);
-            transform: translateY(-2px);
+        .btn-next:hover {
+            background-color: #00b38f;
         }
 
-        .prev-btn {
-            background-color: #3a3a3a;
-            color: #eaeaea;
-            border: 1px solid #555;
+        .btn-prev {
+            background-color: #444;
+            color: #fff;
         }
 
-        .prev-btn:hover {
-            background-color: #4a4a4a;
-            transform: translateY(-2px);
+        .btn-prev:hover {
+            background-color: #555;
         }
 
-        /* የስኬት መልእክት ማሳያ (Success Screen) */
-        .success-screen {
-            display: none;
-            text-align: center;
-            padding: 50px 20px;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        .success-icon {
-            font-size: 70px;
-            color: #d4af37;
-            margin-bottom: 25px;
-            text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
-        }
-
-        .success-screen h1 {
-            color: #d4af37;
-            font-size: 30px;
-            margin-bottom: 15px;
-        }
-
-        .success-screen p {
-            font-size: 18px;
-            color: #ccc;
-            letter-spacing: 0.5px;
+        .btn-submit {
+            background-color: #ff3366;
+            color: #fff;
+            margin-left: auto;
         }
     </style>
 </head>
 <body>
 
-<div class="registration-container">
-    
-    <div class="banner-container">
-        <img src="1000037510.png" alt="Ethio Illuminat Banner">
+    <div class="header-container">
+        <img src="1779494364720.png" alt="ETIOILUMINATI Banner" class="banner-img">
+        
+        <div class="page-cover">
+            ETIOILUMINATI PAGE COVER
+        </div>
     </div>
 
-    <div class="form-content" id="formContent">
-        <form id="regForm" onsubmit="submitForm(event)">
+    <div class="form-container">
+        <form id="regForm" onsubmit="return validateFinal(event)">
             
-            <div class="form-page active" id="page1">
-                <h2>የግል መረጃ (Personal Information)</h2>
+            <div class="form-step active" id="step-1">
+                <h3>Page 1: መሰረታዊ መረጃ</h3>
                 
-                <div class="form-group">
-                    <label>Name (ሙሉ ስም - እስከ አባት ስም):</label>
-                    <input type="text" id="fullname" required placeholder="የእርስዎን ሙሉ ስም ያስገቡ">
+                <div class="input-group">
+                    <label for="fullName">Full Name (ሙሉ ስም) *</label>
+                    <input type="text" id="fullName" placeholder="የእርስዎን ሙሉ ስም ያስገቡ" required>
                 </div>
 
-                <div class="form-group">
-                    <label>Age (ዕድሜ):</label>
-                    <input type="number" id="age" required placeholder="ዕድሜዎን ያስገቡ">
+                <div class="input-group">
+                    <label for="motherName">የናት ስም *</label>
+                    <input type="text" id="motherName" placeholder="የእናትን ስም ያስገቡ" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="phone">ስልክ ቁጥር *</label>
+                    <input type="tel" id="phone" placeholder="09... ወይም 07..." required>
                 </div>
 
-                <div class="form-group">
-                    <label>Gender (ጾታ):</label>
+                <div class="input-group">
+                    <label for="age">እድሜ *</label>
+                    <input type="number" id="age" placeholder="እድሜ" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="gender">ጾታ *</label>
                     <select id="gender" required>
-                        <option value="">ጾታ ይምረጡ</option>
-                        <option value="Male">ወንድ (Male)</option>
-                        <option value="Female">ሴት (Female)</option>
+                        <option value="">ይምረጡ...</option>
+                        <option value="ወንድ">ወንድ</option>
+                        <option value="ሴት">ሴት</option>
                     </select>
                 </div>
 
-                <div class="form-group">
-                    <label>Phone Number (ስልክ ቁጥር):</label>
-                    <input type="text" id="phone" required placeholder="የስልክ ቁጥርዎን ያስገቡ">
+                <div class="input-group">
+                    <label for="homeNumber">የቤት ቁጥር *</label>
+                    <input type="text" id="homeNumber" placeholder="የቤት ቁጥር ያስገቡ" required>
                 </div>
 
                 <div class="btn-container">
-                    <div></div> <button type="button" class="nav-btn next-btn" onclick="nextPage(1, 2)">ቀጣይ (Next)</button>
+                    <button type="button" class="btn btn-next" onclick="checkAndNext(1, 2)">Next</button>
                 </div>
             </div>
 
-            <div class="form-page" id="page2">
-                <h2>ማህበራዊ እና የባንክ መረጃ</h2>
-
-                <div class="form-group">
-                    <label>Education Level (የትምህርት ደረጃ):</label>
-                    <input type="text" id="education" required placeholder="የትምህርት ደረጃዎን ያስገቡ">
+            <div class="form-step" id="step-2">
+                <h3>Page 2: ተጨማሪ መረጃዎች</h3>
+                
+                <div class="input-group">
+                    <label for="education">ያለዎት የትምህርት ደረጃ *</label>
+                    <select id="education" required>
+                        <option value="">ይምረጡ...</option>
+                        <option value="ዲፕሎማ">ዲፕሎማ</option>
+                        <option value="ዲግሪ">መጀመሪያ ዲግሪ</option>
+                        <option value="ማስተርስ">ማስተርስ</option>
+                        <option value="ሌላ">ሌላ</option>
+                    </select>
                 </div>
 
-                <div class="form-group">
-                    <label>Family Members (የቤተሰብ ቁጥር):</label>
-                    <input type="number" id="family_count" required placeholder="የቤተሰብ ቁጥር ያስገቡ">
-                </div>
-
-                <div class="form-group">
-                    <label>House Number (የቤት ቁጥር):</label>
-                    <input type="text" id="house_number" required placeholder="የቤት ቁጥርዎን ያስገቡ">
-                </div>
-
-                <div class="form-group">
-                    <label>Bank Account (የባንክ አማራጭ እና አካውንት ቁጥር):</label>
-                    <input type="text" id="bank_account" required placeholder="የባንክ ስም እና የሂሳብ ቁጥር ያስገቡ">
+                <div class="input-group">
+                    <label for="bankSelect">የባንክ ምርጫ *</label>
+                    <select id="bankSelect" required>
+                        <option value="">የሚጠቀሙበትን ባንክ ይምረጡ...</option>
+                        <option value="የኢትዮጵያ ንግድ ባንክ">የኢትዮጵያ ንግድ ባንክ (CBE)</option>
+                        <option value="አዋሽ ባንክ">አዋሽ ባንክ</option>
+                        <option value="አቢሲኒያ ባንክ">አቢሲኒያ ባንክ</option>
+                        <option value="ቴሌብር">ቴሌብር (Telebirr)</option>
+                    </select>
                 </div>
 
                 <div class="btn-container">
-                    <button type="button" class="nav-btn prev-btn" onclick="prevPage(2, 1)">ወደኋላ (Back)</button>
-                    <button type="button" class="nav-btn next-btn" onclick="nextPage(2, 3)">ቀጣይ (Next)</button>
+                    <button type="button" class="btn btn-prev" onclick="goToStep(1)">Back</button>
+                    <button type="button" class="btn btn-next" onclick="checkAndNext(2, 3)">Next</button>
                 </div>
             </div>
 
-            <div class="form-page" id="page3">
-                <h2>ባዮሜትሪክስ እና ሚዲያ ፋይሎች</h2>
-
-                <div class="form-group">
-                    <label>ID Card Photo (የመታወቂያ ፎቶ - የፊትና የኋላ):</label>
-                    <input type="file" id="id_photo" accept="image/*" required>
+            <div class="form-step" id="step-3">
+                <h3>Page 3: ባዮሜትሪክስ እና ሰነዶች</h3>
+                
+                <div class="biometric-box">
+                    <label>የፊት ስካን (Face Scan) *</label>
+                    <button type="button" class="bio-btn" id="faceBtn" onclick="simulateBio('face')">ካሜራ ክፈትና ስካን አድርግ</button>
+                    <div class="scan-status" id="faceStatus">ያልተደረገ</div>
                 </div>
 
-                <div class="form-group">
-                    <label>Personal Photo (የፊት እና የሙሉ ጉርድ ፎቶ):</label>
-                    <input type="file" id="personal_photo" accept="image/*" required>
+                <div class="biometric-box">
+                    <label>የእጅ አሻራ (Fingerprint) *</label>
+                    <button type="button" class="bio-btn" id="fingerBtn" onclick="simulateBio('finger')">አሻራ አንባቢ ክፈት</button>
+                    <div class="scan-status" id="fingerStatus">ያልተደረገ</div>
                 </div>
 
-                <div class="form-group">
-                    <label>Video Message (የቪዲዮ አስተያየት / መልእክት):</label>
-                    <input type="file" id="video_message" accept="video/*" required>
+                <div class="input-group">
+                    <label for="idFront">የመታወቂያ ፊት (ID Front) *</label>
+                    <input type="file" id="idFront" accept="image/*" required>
+                    <span class="file-label">የመታወቂያዎን የፊተኛውን ክፍል ያያይዙ</span>
                 </div>
 
-                <div class="form-group">
-                    <label>Fingerprint Scan (የአውራ ጣት አሻራ ስካን ፋይል):</label>
-                    <input type="file" id="fingerprint" accept="image/*" required>
+                <div class="input-group">
+                    <label for="idBack">የመታወቂያ ጀርባ (ID Back) *</label>
+                    <input type="file" id="idBack" accept="image/*" required>
+                    <span class="file-label">የመታወቂያዎን የጀርባውን ክፍል ያያይዙ</span>
                 </div>
 
-                <div class="form-group">
-                    <label>Face Scan (የፊት አሻራ ስካን ፋይል):</label>
-                    <input type="file" id="face_scan" accept="image/*" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Registration Date (የተመዘገቡበት ቀን):</label>
-                    <input type="text" id="reg_date" readonly>
+                <div class="input-group">
+                    <label for="userPhoto">የራስዎ ፎቶ *</label>
+                    <input type="file" id="userPhoto" accept="image/*" required>
                 </div>
 
                 <div class="btn-container">
-                    <button type="button" class="nav-btn prev-btn" onclick="prevPage(3, 2)">ወደኋላ (Back)</button>
-                    <button type="submit" class="nav-btn submit-btn">ይመዝገቡ (Submit)</button>
+                    <button type="button" class="btn btn-prev" onclick="goToStep(2)">Back</button>
+                    <button type="submit" class="btn btn-submit">Submit</button>
                 </div>
             </div>
 
         </form>
     </div>
 
-    <div class="success-screen" id="successScreen">
-        <div class="success-icon">✦</div>
-        <h1>Successfully Registered!</h1>
-        <p>Welcome to Ethio Illuminat</p>
-    </div>
-</div>
+    <script>
+        // የባዮሜትሪክ ሁኔታዎችን መቆጣጠሪያ
+        let isFaceScanned = false;
+        let isFingerScanned = false;
 
-<script>
-    // የዛሬውን ቀን በራሱ እንዲሞላ ማድረጊያ
-    document.getElementById('reg_date').value = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        // የየገጹን ግዴታ መረጃዎች የመፈተሻ ተግባር
+        function checkAndNext(currentStep, nextStep) {
+            const currentStepDiv = document.getElementById('step-' + currentStep);
+            const inputs = currentStepDiv.querySelectorAll('input[required], select[required]');
+            let allValid = true;
 
-    function nextPage(current, next) {
-        // የያዝነውን ገጽ ደብቆ ቀጣዩን ማሳየት
-        document.getElementById('page' + current).classList.remove('active');
-        document.getElementById('page' + next).classList.add('active');
-    }
+            inputs.forEach(input => {
+                if (!input.value) {
+                    allValid = false;
+                    input.reportValidity(); // ክፍት ቦታ ካለ ቀይ ምልክት ያሳያል
+                }
+            });
 
-    function prevPage(current, prev) {
-        // ወደ ኋላ መመለሻ
-        document.getElementById('page' + current).classList.remove('active');
-        document.getElementById('page' + prev).classList.add('active');
-    }
+            if (allValid) {
+                goToStep(nextStep);
+            }
+        }
 
-    function submitForm(event) {
-        event.preventDefault(); // ገጹ እንዳይደሰዝዝ
-        
-        // ፎርሙን ደብቆ የስኬት መልእክቱን በውቡ ማሳየት
-        document.getElementById('formContent').style.display = 'none';
-        document.getElementById('successScreen').style.display = 'block';
-    }
-</script>
+        function goToStep(step) {
+            document.querySelectorAll('.form-step').forEach(el => el.classList.remove('active'));
+            document.getElementById('step-' + step).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // ባዮሜትሪክስን በጊዜያዊ አኒሜሽን የማስመስያ (Simulation)
+        function simulateBio(type) {
+            if (type === 'face') {
+                const faceStatus = document.getElementById('faceStatus');
+                faceStatus.innerText = "ስካን እያደረገ ነው... እባክዎ በትክክል ይዩ...";
+                faceStatus.style.color = "#00ffcc";
+                setTimeout(() => {
+                    faceStatus.innerText = "የፊት ስካን ተጠናቋል! ✓";
+                    isFaceScanned = true;
+                }, 2500);
+            } else if (type === 'finger') {
+                const fingerStatus = document.getElementById('fingerStatus');
+                fingerStatus.innerText = "አሻራ እየፈለገ ነው... ጣትዎን ያቆዩ...";
+                fingerStatus.style.color = "#00ffcc";
+                setTimeout(() => {
+                    fingerStatus.innerText = "የእጅ አሻራ ተነስቷል! ✓";
+                    isFingerScanned = true;
+                }, 2500);
+            }
+        }
+
+        // የመጨረሻውን ፎርም ከመላኩ በፊት ባዮሜትሪክስ መደረጉን መፈተሻ
+        function validateFinal(event) {
+            event.preventDefault();
+            
+            if (!isFaceScanned) {
+                alert("እባክዎ መጀመሪያ የፊት ስካን ያድርጉ!");
+                return false;
+            }
+            if (!isFingerScanned) {
+                alert("እባክዎ መጀመሪያ የእጅ አሻራ ስካን ያድርጉ!");
+                return false;
+            }
+
+            alert('ፎርሙ ሁሉንም መስፈርቶች አሟልቶ በተሳካ ሁኔታ ተልኳል!');
+            return true;
+        }
+    </script>
 
 </body>
 </html>
