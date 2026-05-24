@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethio Illuminat Membership Registration</title>
+    <style>
+        /* ሙሉ የገጹ መልክ (Premium Dark Theme) */
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: radial-gradient(circle, #1a1a1a 0%, #0d0d0d 100%);
+            color: #eaeaea;
+            margin: 0;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        /* ዋናው የፎርም ሳጥን ውበት */
+        .registration-container {
+            background: #1f1f1f;
+            border: 2px solid #d4af37; /* የወርቅ ቀለም መስመር */
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.2);
+            width: 100%;
+            max-width: 550px;
+            overflow: hidden;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ባነሩ/ሎጎው ሙሉ ለሙሉ እንዲታይ ማድረጊያ */
+        .banner-container {
+            width: 100%;
+            background-color: #0d0d0d;
+            border-bottom: 2px solid #d4af37;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .banner-container img {
+            width: 100%;
+            height: auto;
+            max-height: 250px;
+            object-fit: contain; /* ምስሉ እንዳይቆረጥ ወይም እንዳይጨፈለቅ */
+            display: block;
+        }
+
+        .form-content {
+            padding: 25px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #d4af37; /* የወርቅ ርዕስ */
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 22px;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .form-page {
+            display: none;
+        }
+
+        .form-page.active {
+            display: block;
+        }
+
+        /* የግብዓት ሳጥኖች (Input Fields) ውበት */
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #d4af37; /* የፅሁፍ መግለጫዎቹ በወርቅማ ቀለም */
+            font-size: 14px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group input[type="file"],
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            background-color: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 8px;
+            color: #fff;
+            box-sizing: border-box;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        /* ሳጥኖቹ ሲነኩ የሚኖራቸው ውበት (Focus) */
+        .form-group input:focus, .form-group select:focus {
+            border-color: #d4af37;
+            background-color: #333;
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+            outline: none;
+        }
+
+        /* የፋይል መጫኛ (Upload) ዲዛይን ማሳመሪያ */
+        .form-group input[type="file"] {
+            background-color: #252525;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        /* የማዘዣ ቁልፎች (Buttons) ውበት */
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .nav-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .next-btn, .submit-btn {
+            background: linear-gradient(135deg, #d4af37 0%, #aa8416 100%);
+            color: #0d0d0d;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .next-btn:hover, .submit-btn:hover {
+            background: linear-gradient(135deg, #f1cc5b 0%, #c59b27 100%);
+            transform: translateY(-2px);
+        }
+
+        .prev-btn {
+            background-color: #3a3a3a;
+            color: #eaeaea;
+            border: 1px solid #555;
+        }
+
+        .prev-btn:hover {
+            background-color: #4a4a4a;
+            transform: translateY(-2px);
+        }
+
+        /* የስኬት መልእክት ማሳያ (Success Screen) */
+        .success-screen {
+            display: none;
+            text-align: center;
+            padding: 50px 20px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .success-icon {
+            font-size: 70px;
+            color: #d4af37;
+            margin-bottom: 25px;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+
+        .success-screen h1 {
+            color: #d4af37;
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .success-screen p {
+            font-size: 18px;
+            color: #ccc;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="registration-container">
+    
+    <div class="banner-container">
+        <img src="1000037510.png" alt="Ethio Illuminat Banner">
+    </div>
+
+    <div class="form-content" id="formContent">
+        <form id="regForm" onsubmit="submitForm(event)">
+            
+            <div class="form-page active" id="page1">
+                <h2>የግል መረጃ (Personal Information)</h2>
+                
+                <div class="form-group">
+                    <label>Name (ሙሉ ስም - እስከ አባት ስም):</label>
+                    <input type="text" id="fullname" required placeholder="የእርስዎን ሙሉ ስም ያስገቡ">
+                </div>
+
+                <div class="form-group">
+                    <label>Age (ዕድሜ):</label>
+                    <input type="number" id="age" required placeholder="ዕድሜዎን ያስገቡ">
+                </div>
+
+                <div class="form-group">
+                    <label>Gender (ጾታ):</label>
+                    <select id="gender" required>
+                        <option value="">ጾታ ይምረጡ</option>
+                        <option value="Male">ወንድ (Male)</option>
+                        <option value="Female">ሴት (Female)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Number (ስልክ ቁጥር):</label>
+                    <input type="text" id="phone" required placeholder="የስልክ ቁጥርዎን ያስገቡ">
+                </div>
+
+                <div class="btn-container">
+                    <div></div> <button type="button" class="nav-btn next-btn" onclick="nextPage(1, 2)">ቀጣይ (Next)</button>
+                </div>
+            </div>
+
+            <div class="form-page" id="page2">
+                <h2>ማህበራዊ እና የባንክ መረጃ</h2>
+
+                <div class="form-group">
+                    <label>Education Level (የትምህርት ደረጃ):</label>
+                    <input type="text" id="education" required placeholder="የትምህርት ደረጃዎን ያስገቡ">
+                </div>
+
+                <div class="form-group">
+                    <label>Family Members (የቤተሰብ ቁጥር):</label>
+                    <input type="number" id="family_count" required placeholder="የቤተሰብ ቁጥር ያስገቡ">
+                </div>
+
+                <div class="form-group">
+                    <label>House Number (የቤት ቁጥር):</label>
+                    <input type="text" id="house_number" required placeholder="የቤት ቁጥርዎን ያስገቡ">
+                </div>
+
+                <div class="form-group">
+                    <label>Bank Account (የባንክ አማራጭ እና አካውንት ቁጥር):</label>
+                    <input type="text" id="bank_account" required placeholder="የባንክ ስም እና የሂሳብ ቁጥር ያስገቡ">
+                </div>
+
+                <div class="btn-container">
+                    <button type="button" class="nav-btn prev-btn" onclick="prevPage(2, 1)">ወደኋላ (Back)</button>
+                    <button type="button" class="nav-btn next-btn" onclick="nextPage(2, 3)">ቀጣይ (Next)</button>
+                </div>
+            </div>
+
+            <div class="form-page" id="page3">
+                <h2>ባዮሜትሪክስ እና ሚዲያ ፋይሎች</h2>
+
+                <div class="form-group">
+                    <label>ID Card Photo (የመታወቂያ ፎቶ - የፊትና የኋላ):</label>
+                    <input type="file" id="id_photo" accept="image/*" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Personal Photo (የፊት እና የሙሉ ጉርድ ፎቶ):</label>
+                    <input type="file" id="personal_photo" accept="image/*" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Video Message (የቪዲዮ አስተያየት / መልእክት):</label>
+                    <input type="file" id="video_message" accept="video/*" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Fingerprint Scan (የአውራ ጣት አሻራ ስካን ፋይል):</label>
+                    <input type="file" id="fingerprint" accept="image/*" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Face Scan (የፊት አሻራ ስካን ፋይል):</label>
+                    <input type="file" id="face_scan" accept="image/*" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Registration Date (የተመዘገቡበት ቀን):</label>
+                    <input type="text" id="reg_date" readonly>
+                </div>
+
+                <div class="btn-container">
+                    <button type="button" class="nav-btn prev-btn" onclick="prevPage(3, 2)">ወደኋላ (Back)</button>
+                    <button type="submit" class="nav-btn submit-btn">ይመዝገቡ (Submit)</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="success-screen" id="successScreen">
+        <div class="success-icon">✦</div>
+        <h1>Successfully Registered!</h1>
+        <p>Welcome to Ethio Illuminat</p>
+    </div>
+</div>
+
+<script>
+    // የዛሬውን ቀን በራሱ እንዲሞላ ማድረጊያ
+    document.getElementById('reg_date').value = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    function nextPage(current, next) {
+        // የያዝነውን ገጽ ደብቆ ቀጣዩን ማሳየት
+        document.getElementById('page' + current).classList.remove('active');
+        document.getElementById('page' + next).classList.add('active');
+    }
+
+    function prevPage(current, prev) {
+        // ወደ ኋላ መመለሻ
+        document.getElementById('page' + current).classList.remove('active');
+        document.getElementById('page' + prev).classList.add('active');
+    }
+
+    function submitForm(event) {
+        event.preventDefault(); // ገጹ እንዳይደሰዝዝ
+        
+        // ፎርሙን ደብቆ የስኬት መልእክቱን በውቡ ማሳየት
+        document.getElementById('formContent').style.display = 'none';
+        document.getElementById('successScreen').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
